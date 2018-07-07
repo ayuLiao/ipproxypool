@@ -1,0 +1,37 @@
+PROXYPOOL
+
+该项目的主要功能是提供一个ip代理池，其中的代理主要收集于互联网上的免费代理，并通过简单的权重算法来保留可以用的代理
+
+爬取代理的主要逻辑在 ProxyCrawler.py
+
+主要对不同的代理网站进行爬取，并记录爬取方法是否失效
+
+代码结构：
+
+Checker.py 代理检查器，会定时检查爬取的代理是否有效
+Getter.py 代理爬虫调度器，调用写好的代理爬虫，获得爬虫返回的代理
+ProxyCrawler.py 代理爬虫具体的逻辑
+RedisClient.py Redis客户端
+Scheduler.py 调度器，主要调度系统中不同的模块
+api.py web接口，通过flask实现的简单接口，可以通过请求这些接口获得一个可用的代理
+logger.py 日志打印者
+utils.py 工具类
+main.py 主类
+
+运行环境：
+python3.5
+
+需要库：
+Redis
+Flask
+Pyquery
+Requests
+aiohttp
+
+运行
+python main.py
+
+web.py接口说明
+
+/random ---> 随机获得一个可用代理
+/count  ---> 当前数据库中代理总数
